@@ -1,0 +1,64 @@
+
+import time
+print("---------- Find Proximity Measure Of Nominal Attributes ----------\n")
+time.sleep(3)
+print("--------------------- Write The Nominal Text File ---------------------\n")
+def writeFile():
+    fw = open("Nominal.txt","w")
+    fw.write("Good\t Poor\t Farmer\t Fever")
+    fw.write("\nGood\t Rich\t Dr\t Cough")
+    fw.write("\nNotGood\t Poor\t Farmer\t Fever")
+    fw.close()
+    print("--> Successfully Write The Nominal File ! \n")
+writeFile()
+time.sleep(3)
+print("---------------------- Read The Nominal Text File --------------------\n")
+def readFile():
+    fr = open("Nominal.txt","r")
+    data = fr.read()
+    print(data)
+    fr.close()
+    print("\n --> Read Data Set Successfully ! \n")
+readFile()
+time.sleep(3)
+print("------------------------ Operation Apply On Text File -----------------------\n")
+print("\n------------------------------ Wait For Output ----------------------------\n")
+def findPMNAttributes():
+    f = open("Nominal.txt","r")
+    data = f.readline().split()
+    arr_data = []
+    line = 1
+    while data:
+        arr_data.append(data)
+        data = f.readline().split()
+        line += 1
+    print("My Data In Data Set : " ,arr_data)
+    number = len(arr_data)
+    print("Total Number Of Data : ", number)
+    print("\n")
+    time.sleep(2.5)
+    for i in range(number):
+        p = len(arr_data[i])
+        listdata = list(arr_data[i])
+        print("Data " ,i," : ",listdata)
+    print("\n")
+    for j in range(number):
+        for k in range(number):
+            match = set(list(arr_data[j]))&set(list(arr_data[k]))
+            length = len(match)
+            x = p - length
+            dism = x/p
+            sim = length/p
+            time.sleep(3)
+            print("\nMatches (Data " , k , " & Data " , j ,"): " ,length)
+            print("Total Number Of Attributes   : " ,p)
+            print("Dissimilarity Between        : ",dism, " = ", round(dism))
+            print("Similarity Between           : ",sim, " = ", round(sim))
+    print("\nGenerate The Dissimilarity Matrix ! \n working progress")
+    f.close()
+    time.sleep(2)
+    print("\n--> Successfully Proxmity Measure Of Nominal Attributes")
+findPMNAttributes()
+def intro():
+    print("Coded By : Ravi Kumar Chauarasia.")
+intro()
