@@ -1,0 +1,63 @@
+
+import time
+print("---------- Find Proximity Measure Of Binary Attributes Using Jaccard Similarity----------\n")
+time.sleep(2)
+print("--------------------- Write The Binary Attributes Data-Set Text File ---------------------\n")
+def writeFile():
+    fw = open("Binary.txt","w")
+    fw.write("\t\tTrue\t Positive\t 0\t Yes")
+    fw.write("\n\t\tFalse\t Negative\t 1\t Yes")
+    fw.write("\n\t\tTrue\t Positive\t 0\t No")
+    fw.close()
+    print("--> Successfully Write The Binary Data_Set File ! \n")
+writeFile()
+time.sleep(1)
+print("---------------------- Read The Nominal Text File --------------------\n")
+def readFile():
+    fr = open("Binary.txt","r")
+    data = fr.read()
+    print("Data\tText 1\tText 2\tText 3\tText 4\n")
+    print(data)
+    fr.close()
+    print("\n --> Read Data Set Successfully ! \n")
+readFile()
+time.sleep(1)
+print("------------------------ Operation Apply On Text File -----------------------\n")
+print("\n------------------------------ Wait For Output ----------------------------\n")
+def findPMBAttributes():
+    f = open("Binary.txt","r")
+    data = f.readline().split()
+    arr_data = []
+    line = 1
+    while data:
+        arr_data.append(data)
+        data = f.readline().split()
+        line += 1
+    print("My Data In Data Set : " ,arr_data)
+    number = len(arr_data)
+    print("Total Number Of Data : ", number)
+    print("\n")
+    print("Data     : \t[Text 1\t Text 2\t Text 3\t Text 4]")
+    for i in range(number):
+        p = len(arr_data[i])
+        listdata = list(arr_data[i])
+        print("Data ", i, " : ", listdata)
+        print("Total Number Of Attributes : ", p)
+    for j in range(number):
+        for k in range(number):
+            union = set(list(arr_data[j]))|set(list(arr_data[k]))
+            intersection = set(list(arr_data[j])) & set(list(arr_data[k]))
+            lenUnion = len(union)
+            lenIntersection = len(intersection)
+            jsim = lenIntersection/lenUnion
+            time.sleep(3)
+            print("\nJaccard Simmilarity Between(Data ", k, " & Data ", j, ") : ", jsim)
+    print("\n")
+    time.sleep(1)
+    f.close()
+    time.sleep(1)
+    print("\n--> Successfully Proxmity Measure Of Binary Attributes Using Jaccard Similarity")
+findPMBAttributes()
+def intro():
+    print("Coded By : Ravi Kumar Chauarasia.")
+intro()
